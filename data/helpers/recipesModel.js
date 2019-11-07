@@ -2,8 +2,8 @@ const db = require("../db-config");
 
 module.exports = {
   getRecipes,
-  getShoppingList
-  //   getInstructions
+  getShoppingList,
+    getInstructions
 };
 
 function getRecipes() {
@@ -19,4 +19,9 @@ function getShoppingList(recipe_id) {
     .where("ir.receipe_id", recipe_id);
 }
 
-function getInstructions(recipe_id) {}
+function getInstructions(recipe_id) {
+  return db
+    .select("step_number", "instructions")
+    .from("steps")
+    .where("receipe_id", recipe_id);
+}

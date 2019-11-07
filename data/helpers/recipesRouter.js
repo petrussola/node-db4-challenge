@@ -27,4 +27,16 @@ router.get("/:id/shoppingList", (req, res) => {
     });
 });
 
+router.get("/:id/instructions", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const instructions = await Recipes.getInstructions(id);
+    res.status(200).json(instructions);
+  } catch (error) {
+    res
+      .status(404)
+      .json({ message: `Could not retrieve isntructions: ${error.message}` });
+  }
+});
+
 module.exports = router;
