@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const helmet = require("helmet");
 const receipesRouter = require("./data/helpers/recipesRouter");
+const ingredientsRouter = require("./data/helpers/ingredientsRouter");
 
 const server = express();
 
@@ -12,6 +13,7 @@ server.use(express.json());
 
 // ROUTER
 server.use("/api/recipes", receipesRouter);
+server.use("/api/ingredients", ingredientsRouter);
 
 server.get("/", (req, res) => {
   res.status(200).json({ message: `Hello from dummy endpoint` });
