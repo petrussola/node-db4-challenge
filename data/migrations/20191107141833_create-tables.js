@@ -46,8 +46,8 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-    .dropTableIfExists("ingredients")
-    .dropTableIfExists("recipes")
+    .dropTableIfExists("steps")
     .dropTableIfExists("ingredientsRecipes")
-    .dropTableIfExists("steps");
+    .dropTableIfExists("recipes")
+    .dropTableIfExists("ingredients");
 };
